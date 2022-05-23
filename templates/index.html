@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style type="text/css">
+    .left    { text-align: left;}
+    .right   { text-align: right;}
+    .center  { text-align: center;}
+    .justify { text-align: justify;}
+    </style>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Sistem Rekomendasi Ekstrakurikuler Siswa SMA</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{{ url_for('static',filename='assets/img/logoummi.png') }}" rel="logoummi">
+  <link href="{{ url_for('static',filename='assets/img/logoummi.png') }}" rel="logoummi">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ url_for('static',filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static',filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static',filename='assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static',filename='assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static',filename='assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{{ url_for('static',filename='assets/css/style.css') }}" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h4 class="" alt="" class="">SISTEM REKOMENDASI EKTRAKURIKULER SMA</h4>
+    
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">Penjelasan Ekstrakurikuler</a></li>
+          <li><a class="nav-link scrollto" href="#services">Tes Eskul</a></li>
+          <li><a class="nav-link scrollto" href="#team">Tentang</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center text-align: justify">
+          <h1>Latar Belakang</h1>
+          <h2 class="justify">
+            Peraturan Permendikbud nomor 62 tahun 2014 tentang kegiatan 
+            ekstrakurikuler, menyebutkan bahwa setiap peserta didik memiliki 
+            hak mengikuti kegiatan ekstrakurikuler sesuai dengan minat dan 
+            bakat mereka</h2>
+          <div><a href="#about" class="btn-get-started scrollto">Penjelasan</a></div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img">
+          <img src="{{ url_for('static',filename='assets/img/eskul.jpg') }}" class="img-fluid" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-xl-5 col-lg-6 d-flex justify-content-center video-box align-items-stretch position-relative">
+
+            <a href="https://www.youtube.com/watch?v=LcAgOL_IsIA" class="glightbox play-btn mb-4"></a>
+          </div>
+
+          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+            <h3>Penjelasan Ekstrakurikuler</h3>
+            <p class="justify">Ekstrakurikuler adalah kegiatan pengembangan karakter dalam rangka perluasan potensi, bakat, minat, kemampuan, kepribadian, kerja sama, dan kemandirian peserta didik secara optimal yang dilakukan di luar jam belajar kegiatan intrakurikuler dan kegiatan kokurikuler di bawah bimbingan dan pengawasan satuan pendidikan.</p>
+
+            <h4>Beberapa Bidang Ekstrakurikuler : </h4>
+            
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-book"></i></div>
+              <h4 class="title"><a href="">Akademik dan Kebahasaan</a></h4>
+              <p class="description">Contohnya : English Club, Japanese Club, Debat dsb yang berhubungan dengan akademik</p>
+            </div>
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-flag"></i></div>
+              <h4 class="title"><a href="">Bela Negara</a></h4>
+              <p class="description">Contohnya seperti Pramuka, PMR & Paskibra</p>
+            </div>
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-atom"></i></div>
+              <h4 class="title"><a href="">IT atau Teknologi</a></h4>
+              <p class="description">Contohnya seperti Eskul Fotograph, Komputer, Robotic dsb yang berhubungan dengan teknologi</p>
+            </div>
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-palette"></i></div>
+              <h4 class="title"><a href="">Kesenian</a></h4>
+              <p class="description">Contohnya : Band, Paduan Suara, Tari, Seni Rupa dll</p>
+            </div>
+            <div class="icon-box">
+              <div class="icon"><i class="bx bxs-tree"></i></div>
+              <h4 class="title"><a href="">Lingkungan Hidup</a></h4>
+              <p class="description">Contohnya seperti klub pendaki gunung</p>
+            </div>
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-basketball"></i></div>
+              <h4 class="title"><a href="">Olahraga</a></h4>
+              <p class="description">Contohnya : Futsal, Bola, Voli dan olahraga lainnya</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+    <!-- ======= Input Data Section ======= -->
+    <section id="services" class="services section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Tes Minat/bakatmu Disini</h2>
+          <p class="justify">Aplikasi ini dibuat untuk membantu para siswa SMA dalam menentukan kegiatan  ekstrakurikuler. Sistem rekomendasi dimodelkan dengan metode Content-based Filtering 
+            & Collaborative Filtering, semua hal disimpulkan berdasarkan pengalaman-pengalaman para siswa SMA yang dulu pernah atau sekarang sedang mengikuti ekstrakurikuler. Sistem ini dibuat berdasarkan beberapa faktor yang berpengaruh.</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-calendar4-week" style="color: #ff689b;"></i></div>
+              <h4 class="title"><a href="https://cb-68.herokuapp.com/">Content-based Filtering </a></h4>
+              <p class="description justify">Kalian akan dibandingkan dengan orang lain yang sudah ikut eskul dan mencari kemiripan paling besar berdasarkan pengalaman mereka</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-calendar4-week" style="color: #e9bf06;"></i></div>
+              <h4 class="title"><a href="/colab">Collaborative Filtering</a></h4>
+              <p class="description justify">Menghitung tes minat dan bakat, jika menjawab ya maka nilai 1 dan tidak nilai 0, dan hasil prediksi disimpulkan dari keseluruhan nilai dengan data yang sudah ada</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-calendar4-week" style="color: #3f06e9;"></i></div>
+              <h4 class="title"><a href="https://forms.gle/GCFBqqbeXbwmASh89">Isi Kuesioner Penelitian</a></h4>
+              <p class="description justify">Mohon Bantuan untuk mengisi kuesioner setelah menggunakan sistem rekomendasi ini, terima kasih.</p>
+            </div>
+          </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Team Section ======= -->
+    <sectio id="team" class="team section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Tentang</h2>
+          <p class="justify">Aplikasi ini dibuat oleh Mahasiswa Universitas Muhammadiyah Sukabumi, diajukan sebagai syarat untuk Skripsi. Terima kasih kepada Dosen Pembimbing, teman-teman yang sudah mendukung atas pembuatan aplikasi ini.</p>
+        </div>
+
+        <div class="row text-center d-flex justify-content-center">
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch justify">
+            <div class="member">
+              <div class="member-img text-center d-flex justify-content-center">
+                <img src="{{ url_for('static',filename='assets/img/team/diyo.jpg') }}" class="img-fluid justify text-center d-flex justify-content-center">
+                <div class="social">
+                  <a href="https://www.facebook.com/diyosukma"><i class="bi bi-facebook"></i></a>
+                  <a href="https://www.instagram.com/diyosukma7/"><i class="bi bi-instagram"></i></a>
+                  <a href="https://www.linkedin.com/in/diyo-sukma/"><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Diyo Sukma Pradana</h4>
+                <span>Universitas Muhammdiyah Sukabumi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    </section><!-- End Team Section -->
+
+   
+   
+
+  </main>
+  <!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+  
+
+        </div>
+      </div>
+    </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{{ url_for('static',filename='assets/vendor/purecounter/purecounter.js') }}"></script>
+  <script src="{{ url_for('static',filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='assets/vendor/php-email-form/validate.js') }}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{{ url_for('static',filename='assets/js/main.js') }}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+
+    <title>TES MINAT BAKAT</title>
+  </head>
+
+<div class="mt-5 mb-5">
+  <form action="/colab" method="post">
+    <div class="container">
+      <h1>Sistem Rekomendasi Ekstrakurikuler Collaborative Filtering</h1>
+      <table id="myTable" class="display">
+        <thead>
+          <tr>
+              <th style="width: 5%;" class="text-center">No</th>
+              <th>Soal</th>
+              <th>Jawaban</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+              <td>1</td>
+              <td>Menggemari kegiatan yang melibatkan tulisan</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes1" id="mb01-01" value="Ya" required>
+                    <label class="form-check-label" for="inlineRadio1">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes1" id="mb01-00" value="Tidak" required>
+                    <label class="form-check-label" for="inlineRadio2">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>2</td>
+              <td>Gemar menuangkan ide dalam bentuk tulisan atau puisi</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes2" id="mb02-01" value="Ya" required>
+                    <label class="form-check-label" for="mb02-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes2" id="mb02-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb02-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>3</td>
+              <td>Senang berinteraksi melalui verbal atau bercerita</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes3" id="mb03-01" value="Ya" required>
+                    <label class="form-check-label" for="mb03-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes3" id="mb03-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb03-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>4</td>
+              <td>Memiliki ketertarikan dalam dunia menulis, khususnya menulis sebuah cerita fiksi</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes4" id="mb04-01" value="Ya" required>
+                    <label class="form-check-label" for="mb04-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes4" id="mb04-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb04-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>5</td>
+              <td>Gemar berargumen</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes5" id="mb05-01" value="Ya" required>
+                    <label class="form-check-label" for="mb05-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes5" id="mb05-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb05-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>6</td>
+              <td>Gemar ilmu linguistik</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes6" id="mb06-01" value="Ya" required>
+                    <label class="form-check-label" for="mb06-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes6" id="mb06-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb06-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>7</td>
+              <td>Memiliki peliharaan baik berupa hewan ataupun tanaman</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes7" id="mb07-01" value="Ya" required>
+                    <label class="form-check-label" for="mb07-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes7" id="mb07-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb07-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Mencintai dan gemar mempelajari segala sesuatu yang berhubungan dengan alam</td>
+            <td>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="tes8" id="mb08-01" value="Ya" required>
+                <label class="form-check-label" for="mb08-01">Ya</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="tes8" id="mb08-00" value="Tidak" required>
+                <label class="form-check-label" for="mb08-00">Tidak</label>
+              </div>
+            
+            </td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Memiliki niat untuk berkunjung ke kebun binatang</td>
+          <td>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="tes9" id="mb09-01" value="Ya" required>
+              <label class="form-check-label" for="mb09-01">Ya</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="tes9" id="mb09-00" value="Tidak" required>
+              <label class="form-check-label" for="mb09-00">Tidak</label>
+            </div>
+          
+          </td>
+      </tr>
+      <tr>
+              <td>10</td>
+              <td>Mencintai kegiatan yang berhubungan dengan pecinta alam</td>
+              <td>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="tes10" id="mb10-01" value="Ya" required>
+                  <label class="form-check-label" for="mb10-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="tes10" id="mb10-00" value="Tidak" required>
+                  <label class="form-check-label" for="mb10-00">Tidak</label>
+                </div>
+              
+              </td>
+          </tr>
+          <tr>
+              <td>11</td>
+              <td>Menyukai kegiatan yang menenangkan, misalnya kegiatan memancing</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes11" id="mb11-01" value="Ya" required>
+                    <label class="form-check-label" for="mb11-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes11" id="mb11-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb11-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>12</td>
+              <td>Tidak mengabaikan kelestarian alam atau lingkungan</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes12" id="mb12-01" value="Ya" required>
+                    <label class="form-check-label" for="mb12-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes12" id="mb12-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb12-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>13</td>
+              <td>Gemar memikirkan cita-cita yang ingin digapai</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes13" id="mb13-01" value="Ya" required>
+                    <label class="form-check-label" for="mb13-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes13" id="mb13-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb13-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>14</td>
+              <td>Cenderung memilih untuk melakukan berbagai hal secara individu</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes14" id="mb14-01" value="Ya" required>
+                    <label class="form-check-label" for="mb14-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes14" id="mb14-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb14-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>15</td>
+              <td>Cenderung menyukai bekerja hanya dengan kemampuan sendiri</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes15" id="mb15-01" value="Ya" required>
+                    <label class="form-check-label" for="mb15-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes15" id="mb15-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb15-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>16</td>
+              <td>Gemar mendokumentasikan pengalaman dan perasaannya dalam bentuk tulisan</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes16" id="mb16-01" value="Ya" required>
+                    <label class="form-check-label" for="mb16-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes16" id="mb16-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb16-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>17</td>
+              <td>Mempertimbangkan baik sisi plus ataupun minus terhadap keputusan yang akan diambil dalam menghadapi sebuah masalah</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes17" id="mb17-01" value="Ya" required>
+                    <label class="form-check-label" for="mb17-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes17" id="mb17-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb17-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>18</td>
+              <td>Memahami sisi positif maupun negatif yang ada dalam dirinya</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes18" id="mb18-01" value="Ya" required>
+                    <label class="form-check-label" for="mb18-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes18" id="mb18-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb18-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>19</td>
+              <td>Menyukan permainan yang memerlukan pemikiran kritis</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes19" id="mb19-01" value="Ya" required>
+                    <label class="form-check-label" for="mb19-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes19" id="mb19-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb19-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>20</td>
+              <td>Menyukai science</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes20" id="mb20-01" value="Ya" required>
+                    <label class="form-check-label" for="mb20-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes20" id="mb20-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb20-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>21</td>
+              <td>Mencintai dunia eksakta</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes21" id="mb21-01" value="Ya" required>
+                    <label class="form-check-label" for="mb21-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes21" id="mb21-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb21-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>22</td>
+              <td>Suka bermain komputer dan menemukan cara kerja komputer</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes22" id="mb22-01" value="Ya" required>
+                    <label class="form-check-label" for="mb22-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes22" id="mb22-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb22-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>23</td>
+              <td>Cenderung lebih mudah bekerja dan berpikir mengenai hal-hal yang berhubungan dengan angka</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes23" id="mb23-01" value="Ya" required>
+                    <label class="form-check-label" for="mb23-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes23" id="mb23-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb23-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>24</td>
+              <td>Suka pelajaran matematika</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes24" id="mb24-01" value="Ya" required>
+                    <label class="form-check-label" for="mb24-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes24" id="mb24-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb24-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>25</td>
+              <td>Gemar berinteraksi dengan sesama</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes25" id="mb25-01" value="Ya" required>
+                    <label class="form-check-label" for="mb25-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes25" id="mb25-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb25-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>26</td>
+              <td>Tidak sulit dalam beradaptasi dengan orang baru</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes26" id="mb26-01" value="Ya" required>
+                    <label class="form-check-label" for="mb26-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes26" id="mb26-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb26-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>27</td>
+              <td>Cenderung menyukai untuk bekerja secara berkelompok</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes27" id="mb27-01" value="Ya" required>
+                    <label class="form-check-label" for="mb27-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes27" id="mb27-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb27-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>28</td>
+              <td>Peduli dan ringan tangan kepada orang lain</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes28" id="mb28-01" value="Ya" required>
+                    <label class="form-check-label" for="mb28-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes28" id="mb28-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb28-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>29</td>
+              <td>Memiliki ide untuk membuat orang lain merasa nyaman untuk bekerja sama</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes29" id="mb29-01" value="Ya" required>
+                    <label class="form-check-label" for="mb29-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes29" id="mb29-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb29-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>30</td>
+              <td>Seringkali menjadi tempat berbagi cerita bagi rekannya</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes30" id="mb30-01" value="Ya" required>
+                    <label class="form-check-label" for="mb30-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes30" id="mb30-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb30-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>31</td>
+              <td>Menyukai dan memiliki kemampuan dalam bermain alat musik</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes31" id="mb31-01" value="Ya" required>
+                    <label class="form-check-label" for="mb31-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes31" id="mb31-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb31-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>32</td>
+              <td>Mencintai dunia tarik suara dan musik</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes32" id="mb32-01" value="Ya" required>
+                    <label class="form-check-label" for="mb32-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes32" id="mb32-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb32-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>33</td>
+              <td>Mampu dengan mudah meresapi nada atau melodi dari sebuah lagu</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes33" id="mb33-01" value="Ya" required>
+                    <label class="form-check-label" for="mb33-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes33" id="mb33-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb33-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>34</td>
+              <td>Mampu dengan mudah mendefinisikan lagu dan instumen dari berbagai musik dan lagu</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes34" id="mb34-01" value="Ya" required>
+                    <label class="form-check-label" for="mb34-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes34" id="mb34-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb34-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>35</td>
+              <td>Gemar bekerja sambil mendendangkan suatu irama lagu atau musik</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes35" id="mb35-01" value="Ya" required>
+                    <label class="form-check-label" for="mb35-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes35" id="mb35-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb35-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>36</td>
+              <td>Gemar merangkai kata dan menuangkannya kedalam sebuah lagu</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes36" id="mb36-01" value="Ya" required>
+                    <label class="form-check-label" for="mb36-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes36" id="mb36-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb36-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>37</td>
+              <td>Gemar memainkan permainan puzzle atau lego</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes37" id="mb37-01" value="Ya" required>
+                    <label class="form-check-label" for="mb37-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes37" id="mb37-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb37-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>38</td>
+              <td>Mencintai kegiatan fotografi</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes38" id="mb38-01" value="Ya" required>
+                    <label class="form-check-label" for="mb38-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes38" id="mb38-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb38-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>39</td>
+              <td>Gemar melukis</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes39" id="mb39-01" value="Ya" required>
+                    <label class="form-check-label" for="mb39-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes39" id="mb39-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb39-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>40</td>
+              <td>Meniru cara kerja orang lain dalam menghadapi permasalahan</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes40" id="mb40-01" value="Ya" required>
+                    <label class="form-check-label" for="mb40-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes40" id="mb40-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb40-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>41</td>
+              <td>Kemampuan visualisasi dalam bentuk gambar cenderung baik</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes41" id="mb41-01" value="Ya" required>
+                    <label class="form-check-label" for="mb41-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes41" id="mb41-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb41-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>42</td>
+              <td>Memiliki kemampuan yang baik dalam mapping wilayah</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes42" id="mb42-01" value="Ya" required>
+                    <label class="form-check-label" for="mb42-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes42" id="mb42-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb42-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>43</td>
+              <td>Menyukai kegiatan olah tubuh</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes43" id="mb43-01" value="Ya" required>
+                    <label class="form-check-label" for="mb43-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes43" id="mb43-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb43-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>44</td>
+              <td>Cenderung menggerakan anggota tubuh tertentu ketika berpikir</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes44" id="mb44-01" value="Ya" required>
+                    <label class="form-check-label" for="mb44-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes44" id="mb44-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb44-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>45</td>
+              <td>Sering merasa jenuh ketika diharuskan berdiam diri secara terus menerus</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes45" id="mb45-01" value="Ya" required>
+                    <label class="form-check-label" for="mb45-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes45" id="mb45-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb45-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>46</td>
+              <td>Menyukai dunia seni peran atau menari</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes46" id="mb46-01" value="Ya" required>
+                    <label class="form-check-label" for="mb46-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes46" id="mb46-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb46-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>47</td>
+              <td>Menyukai kegiatan yang dilakukan outdoor</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes47" id="mb47-01" value="Ya" required>
+                    <label class="form-check-label" for="mb47-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes47" id="mb47-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb47-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+          <tr>
+              <td>48</td>
+              <td>Lebih menyukai praktik daripada teori</td>
+              <td>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes48" id="mb48-01" value="Ya" required>
+                    <label class="form-check-label" for="mb48-01">Ya</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tes48" id="mb48-00" value="Tidak" required>
+                    <label class="form-check-label" for="mb48-00">Tidak</label>
+                </div>
+              </td>
+          </tr>
+        </tbody>
+    </table> 
+    <input class="btn btn-primary mx-auto mt-3" type="submit" value="Hasil Rekomendasi">
+    </div>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script>
+  $(document).ready( function () {
+    $('#myTable').DataTable({
+      searching: false,
+      ordering: false,
+      lengthMenu: [50]
+    });
+  } );
+
+  let data = '{{ prediction }}' != 'None';
+  if(data)
+    alert('Rekomendasi Ekstra untuk kamu adalah : " {{ prediction }} ", Klik Ok untuk membaca penjelasan eskul')
+    ?''
+    : window.location.href='/#about';
+
+</script>
+
+</body>  
+</html>
